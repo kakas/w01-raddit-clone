@@ -1,0 +1,29 @@
+
+<h2><%= link_to @link.title, @link.url %></h2>
+<h4>
+  <small>
+    Submitted
+    <%= time_ago_in_words(@link.created_at) %>
+    by xxx
+  </small>
+</h4>
+
+<hr>
+
+<div class="btn-group" role="group">
+  <button class="btn btn-default" type="button">Visit Link</button>
+</div>
+
+<div class="btn-group" role="group">
+  <button class="btn btn-default" type="button">
+    <%= link_to "Edit", edit_link_path %>
+  </button>
+  <button class="btn btn-default" type="button">
+    <%= link_to "Destroy", link_path(@link), method: :delete, data: {confirm: "Are you sure?"} %>
+  </button>
+</div>
+
+<div class="btn-group pull-right" role="group">
+  <button class="btn btn-default" type="button">Upvote</button>
+  <button class="btn btn-default" type="button">Downvote</button>
+</div>

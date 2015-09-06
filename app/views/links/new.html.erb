@@ -1,0 +1,7 @@
+
+<h1>Submit New Link</h1>
+<%= simple_form_for @link do |f| %>
+  <%= f.input :title %>
+  <%= f.input :url %>
+  <%= f.button :submit, "Submmit", class: "btn btn-primary btn-lg" %>
+<% end %>

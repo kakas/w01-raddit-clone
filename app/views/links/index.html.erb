@@ -1,1 +1,19 @@
-<h1>Index</h1>
+
+<% @links.each do |link| %>
+  <h2><%= link_to link.title, link_path(link) %></h2>
+  <h4>
+    <small>
+      Submitted
+      <%= time_ago_in_words(link.created_at) %>
+      by xxx
+    </small>
+  </h4>
+  <div class="btn-group" role="group">
+    <button class="btn btn-default" type="button">
+      <%= link_to "Visit link", link.url %>
+    </button>
+    <button class="btn btn-default" type="button">Upvote</button>
+    <button class="btn btn-default" type="button">Downvote</button>
+  </div>
+  <hr>
+<% end %>
