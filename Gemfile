@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'simple_form'
 gem 'devise'
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

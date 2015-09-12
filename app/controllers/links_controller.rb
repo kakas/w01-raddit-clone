@@ -45,6 +45,18 @@ class LinksController < ApplicationController
     redirect_to root_path, alert: "link has been deleted"
   end
 
+  def upvote
+    @link = Link.find(params[:id])
+    @link.liked_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @link = Link.find(params[:id])
+    @link.downvote_from current_user
+    redirect_to :back
+  end
+
   private
 
     def link_params

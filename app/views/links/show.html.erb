@@ -23,10 +23,18 @@
   </div>
 <% end %>
 
-<div class="btn-group pull-right" role="group">
-  <button class="btn btn-default" type="button">Upvote</button>
-  <button class="btn btn-default" type="button">Downvote</button>
-</div>
+  <div class="btn-group pull-right" role="group">
+    <%= link_to like_link_path(@link), method: :put, class: "btn btn-default", type: "button" do %>
+      <span class="glyphicon glyphicon-chevron-up"></span>
+      Upvote
+      <%= @link.get_upvotes.size %>
+    <% end %>
+    <%= link_to dislike_link_path(@link), method: :put, class: "btn btn-default", type: "button" do %>
+      <span class="glyphicon glyphicon-chevron-down"></span>
+      Downvote
+      <%= @link.get_downvotes.size %>
+    <% end %>
+  </div>
 
 <br>
 <br>
