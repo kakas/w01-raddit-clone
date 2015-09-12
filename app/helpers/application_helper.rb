@@ -13,7 +13,5 @@ module ApplicationHelper
       end
 
     message.join('\n').html_safe
-
-
   end
 end

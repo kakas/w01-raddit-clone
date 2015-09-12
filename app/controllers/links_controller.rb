@@ -1,5 +1,7 @@
 class LinksController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
 
   def index
     @links = Link.all
