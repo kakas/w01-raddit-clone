@@ -16,7 +16,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.new(link_params)
 
     if @link.save
       redirect_to root_path, notice: "Adds link successful"
@@ -26,11 +26,11 @@ class LinksController < ApplicationController
   end
 
   def edit
-    @link = Link.find(params[:id])
+    @link = current_user.links.find(params[:id])
   end
 
   def update
-    @link = Link.find(params[:id])
+    @link = current_user.links.find(params[:id])
 
     if @link.update(link_params)
       redirect_to root_path, notice: "Edits link successful"
@@ -40,7 +40,7 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    @link = Link.find(params[:id])
+    @link = current_user.links.find(params[:id])
     @link.destroy
     redirect_to root_path, alert: "link has been deleted"
   end
