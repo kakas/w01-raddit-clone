@@ -11,19 +11,39 @@
 <hr>
 
 <div class="btn-group" role="group">
-  <button class="btn btn-default" type="button">Visit Link</button>
+    <%= link_to "Visit Link", @link.url, class: "btn btn-primary" %>
 </div>
 
 <div class="btn-group" role="group">
-  <button class="btn btn-default" type="button">
-    <%= link_to "Edit", edit_link_path %>
-  </button>
-  <button class="btn btn-default" type="button">
-    <%= link_to "Destroy", link_path(@link), method: :delete, data: {confirm: "Are you sure?"} %>
-  </button>
+    <%= link_to "Edit", edit_link_path, class: "btn btn-default", type: "button" %>
+    <%= link_to "Destroy", link_path(@link), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default", type: "button" %>
 </div>
 
 <div class="btn-group pull-right" role="group">
   <button class="btn btn-default" type="button">Upvote</button>
   <button class="btn btn-default" type="button">Downvote</button>
 </div>
+
+<br>
+<br>
+<br>
+
+<h3><%= @link.comments.count %> Comments</h3>
+<hr>
+<% @link.comments.each do |comment| %>
+  <p><%= comment.content %></p>
+  <%= link_to "Destroy", link_comment_path(comment.link, comment), method: :delete, class: "btn btn-default btn-xs pull-right", data: { confirm: "Are you sure" } %>
+  <p><small>
+    Submitted
+    <strong><%= time_ago_in_words(@link.created_at) %></strong>
+    by xxxx
+  </small></p>
+  <hr>
+
+<% end %>
+
+
+<%= simple_form_for [@link, @link.comments.new] do |f| %>
+  <%= f.input :content %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>
